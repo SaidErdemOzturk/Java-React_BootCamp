@@ -1,3 +1,3 @@
 # If (şart) blokları
-
-## Yukarıda görülen resimlerde şart blokları bulunmaktadır.
+![hata mesajı](https://github.com/SaidErdemOzturk/Java-React_BootCamp/blob/main/Odevler/Gun_1/gun1_resim.jpg)
+## Yukarıda görülen resimlerde şart blokları bulunmaktadır. 
