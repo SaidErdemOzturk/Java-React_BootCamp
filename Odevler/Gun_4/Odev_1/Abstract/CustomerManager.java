@@ -1,5 +1,6 @@
 package Odevler.Gun_4.Odev_1.Abstract;
 
+
 public class CustomerManager {
     
     private DatabaseManager databaseManager;
