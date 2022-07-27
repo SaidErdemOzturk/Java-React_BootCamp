@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="Odevler/Gun_4/Odev_2/Abstract_Interface/src/|Odevler/Gun_5/Odev_1/Proje/src/|Odevler/Gun_2/Odev_1/Property/src/|Dersler/Gun_5/nLayeredDemo/src/|Dersler/northwind/src/main/java/|Odevler/Gun_3/Odev_1/|Dersler/northwind/src/test/java/|Odevler/Gun_4/Odev_3/GameProject/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="Dersler/Gun_5/nLayeredDemo/src"/>
+	<classpathentry kind="src" path="Dersler/northwind/src/main/java"/>
+	<classpathentry kind="src" path="Dersler/northwind/src/test/java"/>
+	<classpathentry kind="src" path="Odevler/Gun_2/Odev_1/Property/src"/>
+	<classpathentry kind="src" path="Odevler/Gun_3/Odev_1"/>
+	<classpathentry kind="src" path="Odevler/Gun_4/Odev_2/Abstract_Interface/src"/>
+	<classpathentry kind="src" path="Odevler/Gun_4/Odev_3/GameProject/src"/>
+	<classpathentry kind="src" path="Odevler/Gun_5/Odev_1/Proje/src"/>
+	<classpathentry kind="output" path="Odevler/Gun_2/Odev_1/Property/bin"/>
+</classpath>
