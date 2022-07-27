@@ -1,4 +1,6 @@
 import business.concretes.CustomerManager;
+import core.abstracts.SingUpService;
+import core.concretes.GoogleSignUpManagerAdapter;
 import dataAccess.concretes.HibernateCustomerDao;
 import entities.concretes.Customer;
 
@@ -13,5 +15,7 @@ public class App {
         customerManager.add(customer);
         customerManager.add(customer2);
         customerManager.signIn(customer);
+        SingUpService singUpService = new GoogleSignUpManagerAdapter();
+        singUpService.signUp(customer);
     }
 }
