@@ -1,4 +1,4 @@
-package JavaReact_BootCamp.hrms;
+package javaReact_BootCamp.hrms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

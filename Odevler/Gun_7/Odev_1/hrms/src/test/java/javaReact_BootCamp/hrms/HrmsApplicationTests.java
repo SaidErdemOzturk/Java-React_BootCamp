@@ -1,4 +1,4 @@
-package JavaReact_BootCamp.hrms;
+package javaReact_BootCamp.hrms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
