@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import javaBootCamp.northwind.business.abstracts.ProductService;
 import javaBootCamp.northwind.core.utilities.results.DataResult;
 import javaBootCamp.northwind.core.utilities.results.Result;
@@ -16,6 +15,7 @@ import javaBootCamp.northwind.entities.concretes.Product;
 
 @RestController
 @RequestMapping("/api/products")
+
 public class ProductsController {
 	
 	private ProductService productService;

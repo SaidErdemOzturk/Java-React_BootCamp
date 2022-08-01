@@ -13,7 +13,6 @@ import javaBootCamp.northwind.core.utilities.results.SuccessResult;
 import javaBootCamp.northwind.dataAccess.abstracts.ProductDao;
 import javaBootCamp.northwind.entities.concretes.Product;
 
-
 @Service
 public class ProductManager implements ProductService{
 
