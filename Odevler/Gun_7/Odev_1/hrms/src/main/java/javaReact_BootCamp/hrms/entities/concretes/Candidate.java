@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +17,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="candidates")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Candidate  extends User{
+	
+	@Column(name="candidate_id")
+	private int candidateId;
 	
 	@Column(name="first_name")
 	private String firstName;

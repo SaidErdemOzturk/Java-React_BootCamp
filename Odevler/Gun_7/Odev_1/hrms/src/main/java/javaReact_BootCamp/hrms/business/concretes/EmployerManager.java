@@ -11,6 +11,7 @@ import javaReact_BootCamp.hrms.core.utilites.result.Result;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessDataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessResult;
 import javaReact_BootCamp.hrms.dataAccess.abstracts.EmployerDao;
+import javaReact_BootCamp.hrms.entities.concretes.Advert;
 import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
 @Service
@@ -37,5 +38,6 @@ public class EmployerManager implements EmployerService {
 		this.employerDao.save(employer);
 		return new SuccessResult("Veri eklendi");
 	}
+
 
 }

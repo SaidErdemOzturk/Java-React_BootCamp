@@ -2,7 +2,10 @@ package javaReact_BootCamp.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,11 +17,8 @@ import lombok.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="employers")
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Employer extends User {
-	
-	@Column(name="employer_id")
-	private int id;
 
 	@Column(name="company_name")
 	private String companyName;

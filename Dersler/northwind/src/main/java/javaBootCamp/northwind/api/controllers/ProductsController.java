@@ -69,4 +69,5 @@ public class ProductsController {
 		return this.productService.getAllSorted();
 	}
 	
+	
 }
