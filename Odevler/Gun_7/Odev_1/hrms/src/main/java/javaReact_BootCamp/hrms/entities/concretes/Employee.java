@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="employee")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Employee extends User {
 	
 	@Column(name="first_name")

@@ -36,7 +36,7 @@ public class EmployerController {
 		return this.employerService.getAll();
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public Result add(Employer employer) {
 		
 		return this.employerService.add(employer);
