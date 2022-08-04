@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import javaBootCamp.northwind.business.abstracts.ProductService;
@@ -16,6 +17,7 @@ import javaBootCamp.northwind.core.utilities.results.SuccessDataResult;
 import javaBootCamp.northwind.core.utilities.results.SuccessResult;
 import javaBootCamp.northwind.dataAccess.abstracts.ProductDao;
 import javaBootCamp.northwind.entities.concretes.Product;
+import javaBootCamp.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
 public class ProductManager implements ProductService{
@@ -95,6 +97,13 @@ public class ProductManager implements ProductService{
 		// TODO Auto-generated method stub
 		Sort sort = Sort.by(Sort.Direction.ASC, "productName");
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort),"veriler çekildi");
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(), "veriler çekildi");
+				
 	}
 
 

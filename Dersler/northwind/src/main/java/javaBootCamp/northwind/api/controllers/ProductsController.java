@@ -13,6 +13,7 @@ import javaBootCamp.northwind.business.abstracts.ProductService;
 import javaBootCamp.northwind.core.utilities.results.DataResult;
 import javaBootCamp.northwind.core.utilities.results.Result;
 import javaBootCamp.northwind.entities.concretes.Product;
+import javaBootCamp.northwind.entities.dtos.ProductWithCategoryDto;
 
 @RestController
 @RequestMapping("/api/products")
@@ -67,6 +68,11 @@ public class ProductsController {
 	@GetMapping("/getAllSorted")
 	public DataResult<List<Product>> getAllSorted(){
 		return this.productService.getAllSorted();
+	}
+	
+	@GetMapping("/getproductwithcategorydetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDto(){
+		return this.productService.getProductWithCategoryDetails();
 	}
 	
 	

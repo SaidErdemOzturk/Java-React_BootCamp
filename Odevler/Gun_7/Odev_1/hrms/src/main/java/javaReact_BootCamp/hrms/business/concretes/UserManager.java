@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javaReact_BootCamp.hrms.business.abstracts.UserService;
 import javaReact_BootCamp.hrms.core.utilites.result.DataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.Result;
+import javaReact_BootCamp.hrms.core.utilites.result.SuccessDataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessResult;
 import javaReact_BootCamp.hrms.dataAccess.abstracts.UserDao;
 import javaReact_BootCamp.hrms.entities.concretes.User;
@@ -27,7 +28,7 @@ public class UserManager implements UserService {
 	@Override
 	public DataResult<List<User>> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "veriler çekildi");
 	}
 
 	@Override

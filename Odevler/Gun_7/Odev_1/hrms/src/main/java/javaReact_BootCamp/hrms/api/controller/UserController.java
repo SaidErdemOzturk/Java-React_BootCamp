@@ -1,12 +1,16 @@
 package javaReact_BootCamp.hrms.api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javaReact_BootCamp.hrms.business.abstracts.UserService;
+import javaReact_BootCamp.hrms.core.utilites.result.DataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.Result;
 import javaReact_BootCamp.hrms.entities.concretes.User;
 
@@ -22,6 +26,11 @@ public class UserController {
 	public UserController(UserService userService) {
 		super();
 		this.userService=userService;
+	}
+	
+	@GetMapping("/getall")
+	public DataResult<List<User>> getAll(){
+		return this.userService.getAll();
 	}
 	
 	@PostMapping("/add")

@@ -40,14 +40,20 @@ public class Advert {
 	@Column(name="max_wage")
 	private int maxWage;
 	
-	@Column(name="open_position_count")
+	@Column(name="min_wage")
 	private int minWage;
+	
+	@Column(name="open_position_count")
+	private int open_position_count;
 	
 	@Column(name="deadline")
 	private LocalDate deadline;
 	
 	@Column(name="starting_date")
 	private LocalDate startingDate;
+	
+	@Column(name="is_active")
+	private boolean isActive;
 	
 	@ManyToOne
 	@JoinColumn(name="employer_id")

@@ -14,6 +14,7 @@ import javaReact_BootCamp.hrms.business.abstracts.AdvertService;
 import javaReact_BootCamp.hrms.core.utilites.result.DataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.Result;
 import javaReact_BootCamp.hrms.entities.concretes.Advert;
+import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
 @RestController
 @RequestMapping("/api/advert")
@@ -42,4 +43,15 @@ public class AdvertController {
 		
 		return this.advertService.getAllSortedWithDate();
 	}
+	
+	@GetMapping("/getbyemployerid")
+	public DataResult<List<Advert>> getByEmployerId(@RequestBody Employer employer){
+		return this.advertService.getByEmployerId(employer);
+	}
+	
+	@GetMapping("/getbyisactivate")
+	public DataResult<List<Advert>> getByIsActivate(){
+		return this.advertService.getAllIsActive();
+	}
+	
 }

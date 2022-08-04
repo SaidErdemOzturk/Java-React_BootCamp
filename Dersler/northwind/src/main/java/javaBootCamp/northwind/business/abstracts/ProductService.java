@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import javaBootCamp.northwind.core.utilities.results.DataResult;
 import javaBootCamp.northwind.core.utilities.results.Result;
 import javaBootCamp.northwind.entities.concretes.Product;
+import javaBootCamp.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductService {
 	DataResult<List<Product>> getAll();
@@ -31,4 +32,7 @@ public interface ProductService {
 	
 	DataResult<List<Product>> getByNameAndCategory(String name,int category);
 	
+	DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(); 
+	
+
 }
