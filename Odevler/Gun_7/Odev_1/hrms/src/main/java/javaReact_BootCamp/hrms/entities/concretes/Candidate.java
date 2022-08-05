@@ -1,10 +1,12 @@
 package javaReact_BootCamp.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -20,13 +22,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="candidates")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","adverts"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","curriculumVitaes"})
 @PrimaryKeyJoinColumn(name="employer_id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper=false)
 public class Candidate{
 	
 	@Id
-	@Column(name="candidate_id")
+	@Column(name="candidates_id")
 	private int candidateId;
 	
 	@Column(name="first_name")
@@ -40,5 +42,9 @@ public class Candidate{
 	
 	@Column(name="birth_day")
 	private LocalDate birthDay;
+	
+	@OneToMany(mappedBy = "candidate")
+	private List<CurriculumVitae> curriculumVitaes;
+	
 
 }

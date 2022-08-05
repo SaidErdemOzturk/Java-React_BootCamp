@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javaBootCamp.northwind.business.abstracts.UserService;
 import javaBootCamp.northwind.core.entities.User;
 import javaBootCamp.northwind.core.utilities.results.ErrorDataResult;
-import javaBootCamp.northwind.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/users")
