@@ -17,7 +17,7 @@ import javaReact_BootCamp.hrms.entities.concretes.Language;
 @RestController
 @RequestMapping("/api/language")
 public class LanguageController {
-
+	
 	private LanguageService languageService;
 	
 	public LanguageController() {
@@ -38,6 +38,5 @@ public class LanguageController {
 	@PostMapping("/add")
 	public Result add(@RequestBody Language language) {
 		return this.languageService.add(language);
-	}
-	
+	}	
 }
