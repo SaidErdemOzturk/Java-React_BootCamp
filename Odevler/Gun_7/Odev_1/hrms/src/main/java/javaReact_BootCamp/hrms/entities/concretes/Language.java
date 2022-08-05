@@ -34,6 +34,7 @@ public class Language {
 	
 	@Min(1)
 	@Max(5)
+	@Column(name="language_level")
 	private int languageLevel;
 	
 	@ManyToOne
