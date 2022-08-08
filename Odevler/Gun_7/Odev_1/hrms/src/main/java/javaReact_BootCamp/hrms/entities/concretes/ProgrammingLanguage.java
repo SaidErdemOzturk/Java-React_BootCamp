@@ -33,5 +33,5 @@ public class ProgrammingLanguage {
 	
 	@ManyToOne
 	@JoinColumn(name="candidate_id")
-	private Candidate candidate;
+	private CurriculumVitae curriculumVitae;
 }

@@ -36,5 +36,12 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 		return new SuccessDataResult<List<CurriculumVitae>>(curriculumVitaeDao.findAll(), "veriler gösteriliyor");
 		
 	}
+
+	@Override
+	public DataResult<List<CurriculumVitae>> getByCandidateId(int candidateId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<CurriculumVitae>>(this.curriculumVitaeDao.getByCandidate_candidateId(candidateId), "veriler gösteriliyor");
+	}
+	
 	
 }

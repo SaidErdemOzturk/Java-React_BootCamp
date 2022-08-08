@@ -60,4 +60,9 @@ public class CurriculumVitae {
 	@OneToMany(mappedBy="curriculumVitae")
 	@JsonIgnoreProperties({"curriculumVitae"})
 	private List<School> schools;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "curriculumVitae")
+	@JsonIgnoreProperties({"curriculumVitae"})
+	private List<ProgrammingLanguage> programs;
 }
