@@ -18,6 +18,8 @@ public interface ProductService {
 	
 	DataResult<List<Product>> getAll(int pageNo,int pageSize);
 	
+	DataResult<Product> findById(int id);
+	
 	DataResult<Product> getByProductName(String productName);
 	
 	DataResult<Product> getByProductNameAndCategoryId(String productName,int categoryId);

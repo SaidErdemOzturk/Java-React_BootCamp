@@ -106,6 +106,12 @@ public class ProductManager implements ProductService{
 				
 	}
 
+	@Override
+	public DataResult<Product> findById(int id) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<Product>(productDao.findById(id), "veri çekildi");
+	}
+
 
 
 }

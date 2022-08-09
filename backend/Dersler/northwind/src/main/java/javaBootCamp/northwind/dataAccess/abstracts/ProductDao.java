@@ -15,6 +15,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	
 	Product getByProductNameAndCategory_CategoryId(String productName,int categoryId);
 	
+	Product findById(int id);
 	
 	List<Product> getByProductNameOrCategory_CategoryId(String productName,int categoryId);
 	
@@ -23,7 +24,6 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	List<Product> getByProductNameContains(String productName);//içeriyorsa
 	
 	List<Product> getByProductNameStartsWith(String productName);//bununla başlayan
-	
 	
 	@Query("From Product where productName=:name and category.categoryId=:category")
 	List<Product> getByNameAndCategory(String name,int category);

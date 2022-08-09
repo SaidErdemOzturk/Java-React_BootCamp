@@ -76,5 +76,10 @@ public class ProductsController {
 		return this.productService.getProductWithCategoryDetails();
 	}
 	
+	@GetMapping("/findbyid")
+	public DataResult<Product> findById(@RequestParam("id") int id){
+		return this.productService.findById(id);
+	}
+	
 	
 }
