@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react'
+import { NavLink } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import ProductService from '../services/productService';
+import { Link } from 'react-router-dom';
 
 export default function ProductList() {
 
@@ -9,7 +11,7 @@ export default function ProductList() {
     useEffect(()=>{
         let productService = new ProductService;
         productService.getProducts().then(result=>setproducts(result.data.data))
-    })
+    },[])
   return (
     <div> <Table striped bordered hover variant="dark">
     <thead>
@@ -24,8 +26,8 @@ export default function ProductList() {
     <tbody>
         {
             products.map(products =>(
-                <tr key={products.id}>
-                <td>{products.productName}</td>
+                <tr key={products.id} >
+                <td><Link to={`/products/${products.id}`} >{products.productName}</Link> </td>
                 <td>{products.unitPrice}</td>
                 <td>{products.unitsInStock}</td>
                 <td>{products.quantityPerUnit}</td>

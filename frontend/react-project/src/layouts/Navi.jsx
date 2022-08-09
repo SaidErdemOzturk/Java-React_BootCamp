@@ -1,12 +1,28 @@
-import React from 'react'
-import CartSummary from './CartSummary'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import SignedOut from './SignedOut';
+import Button from 'react-bootstrap/Button';
+import SignedIn from './SignedIn';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function Navi() {
+
+  const [isAuthenticated, setisAuthenticated] = useState(false)
+
+  const navigate = useNavigate()
+
+  function handleSignOut(params){
+    setisAuthenticated(false)
+    navigate("/")
+  }
+
+  function handleSignIn(params){
+    setisAuthenticated(true)
+  }
   return (
     
     <div>    <>
@@ -14,12 +30,17 @@ export default function Navi() {
       <Container>
         <Navbar.Brand href="#home">Navbar</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
+          <Nav.Link href="#pricing">
+            </Nav.Link> 
+       
+        </Nav>       
+       {isAuthenticated?<SignedIn signOut={handleSignOut} />:<SignedOut signIn={handleSignIn}/>}
       </Container>
+    
     </Navbar>
   </></div>
+ 
   )
 }
