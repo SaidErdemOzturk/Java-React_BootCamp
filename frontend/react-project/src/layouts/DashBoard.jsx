@@ -9,9 +9,11 @@ import { Route,Routes} from 'react-router-dom';
 import ProductDetail from '../pages/ProductDetail';
 import CartDetail from '../pages/CartDetail';
 
+import { ToastContainer, toast } from 'react-toastify';
 export default function DashBoard() {
   return (
     <div>
+      <ToastContainer />
       <Container>
         <Row>
           <Col sm={2}>

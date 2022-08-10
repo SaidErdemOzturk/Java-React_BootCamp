@@ -6,13 +6,15 @@ import SignedOut from './SignedOut';
 import Button from 'react-bootstrap/Button';
 import SignedIn from './SignedIn';
 import { useNavigate } from 'react-router-dom';
-
+import CartSummary from './CartSummary';
+import {useSelector} from 'react-redux';
+import { cartItems } from '../store/initialValues/cartItems';
 
 
 export default function Navi() {
 
   const [isAuthenticated, setisAuthenticated] = useState(false)
-
+  const {cartItems} = useSelector(state=>state.cart)
   const navigate = useNavigate()
 
   function handleSignOut(params){
@@ -35,7 +37,8 @@ export default function Navi() {
           <Nav.Link href="#pricing">
             </Nav.Link> 
        
-        </Nav>       
+        </Nav>
+        {cartItems.length>0&&<CartSummary/>}
        {isAuthenticated?<SignedIn signOut={handleSignOut} />:<SignedOut signIn={handleSignIn}/>}
       </Container>
     
