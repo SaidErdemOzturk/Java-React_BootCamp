@@ -49,9 +49,9 @@ public class AdvertManager implements AdvertService {
 
 	
 	@Override
-	public DataResult<List<Advert>> getByEmployerId(Employer employer) {
+	public DataResult<List<Advert>> getByEmployerId(int employerId) {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Advert>>(advertDao.getByEmployer(employer), "veriler çekildi");
+		return new SuccessDataResult<List<Advert>>(advertDao.getByEmployer_EmployerId(employerId), "veriler çekildi");
 	}
 
 	@Override

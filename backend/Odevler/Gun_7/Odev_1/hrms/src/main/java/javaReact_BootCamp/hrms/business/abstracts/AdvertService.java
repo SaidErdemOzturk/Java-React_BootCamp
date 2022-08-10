@@ -17,7 +17,7 @@ public interface AdvertService {
 
 	DataResult<List<Advert>> getAllSortedWithDate();
 	
-	DataResult<List<Advert>> getByEmployerId(Employer employer);
+	DataResult<List<Advert>> getByEmployerId(int employerId);
 	
 	DataResult<List<Advert>> getAllIsActive();
 	

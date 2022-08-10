@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -46,8 +47,8 @@ public class AdvertController {
 	}
 	
 	@GetMapping("/getbyemployerid")
-	public DataResult<List<Advert>> getByEmployerId(@RequestBody Employer employer){
-		return this.advertService.getByEmployerId(employer);
+	public DataResult<List<Advert>> getByEmployerId(@RequestParam int employerId){
+		return this.advertService.getByEmployerId(employerId);
 	}
 	
 	@GetMapping("/getbyisactivate")
