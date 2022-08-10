@@ -60,6 +60,13 @@ public class AdvertManager implements AdvertService {
 		return new SuccessDataResult<List<Advert>>(advertDao.getByIsActiveTrue(), "veriler gösteriliyor");
 	}
 
+	@Override
+	public Result update(Advert advert) {
+		// TODO Auto-generated method stub
+		this.advertDao.save(advert);
+		return new SuccessResult("veri güncellendi");
+	}
+
 
 
 }

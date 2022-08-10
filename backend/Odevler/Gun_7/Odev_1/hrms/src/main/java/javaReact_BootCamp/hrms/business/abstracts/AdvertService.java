@@ -12,6 +12,8 @@ public interface AdvertService {
 	DataResult<List<Advert>> getAll();
 	
 	Result add(Advert advert);
+	
+	Result update(Advert advert);
 
 	DataResult<List<Advert>> getAllSortedWithDate();
 	

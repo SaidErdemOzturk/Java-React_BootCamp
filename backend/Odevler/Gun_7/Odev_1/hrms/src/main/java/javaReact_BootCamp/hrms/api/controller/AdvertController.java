@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +53,10 @@ public class AdvertController {
 	@GetMapping("/getbyisactivate")
 	public DataResult<List<Advert>> getByIsActivate(){
 		return this.advertService.getAllIsActive();
+	}
+	@PutMapping("/updateadvert")
+	public Result update(@RequestBody Advert advert) {
+		return this.advertService.update(advert);
 	}
 	
 }
