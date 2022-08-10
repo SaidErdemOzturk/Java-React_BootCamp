@@ -3,6 +3,7 @@ package javaReact_BootCamp.hrms.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
 @RestController
 @RequestMapping("/api/employer")
+@CrossOrigin
 public class EmployerController {
 
 	private EmployerService employerService;

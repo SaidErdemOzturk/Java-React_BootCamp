@@ -3,6 +3,7 @@ package javaReact_BootCamp.hrms.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +21,7 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
 @RestController
 @RequestMapping("/api/advert")
+@CrossOrigin
 public class AdvertController {
 	private AdvertService advertService;
 	public AdvertController() {
