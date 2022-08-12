@@ -40,7 +40,7 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 	@Override
 	public DataResult<List<CurriculumVitae>> getByCandidateId(int candidateId) {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<CurriculumVitae>>(this.curriculumVitaeDao.getByCandidate_candidateId(candidateId), "veriler gösteriliyor");
+		return new SuccessDataResult<List<CurriculumVitae>>(this.curriculumVitaeDao.getByCandidate(candidateId), "veriler gösteriliyor");
 	}
 	
 	

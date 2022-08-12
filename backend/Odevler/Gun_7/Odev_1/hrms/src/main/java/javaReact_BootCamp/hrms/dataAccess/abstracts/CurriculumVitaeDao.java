@@ -8,6 +8,6 @@ import javaReact_BootCamp.hrms.entities.concretes.CurriculumVitae;
 
 public interface CurriculumVitaeDao extends JpaRepository<CurriculumVitae, Integer> {
 
-	List<CurriculumVitae> getByCandidate_candidateId(int candidateId);
+	List<CurriculumVitae> getByCandidate(int candidateId);
 	
 }

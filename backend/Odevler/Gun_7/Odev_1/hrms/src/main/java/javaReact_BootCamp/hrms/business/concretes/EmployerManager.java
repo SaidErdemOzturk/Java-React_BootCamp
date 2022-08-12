@@ -32,11 +32,12 @@ public class EmployerManager implements EmployerService {
 		return new SuccessDataResult<List<Employer>>(employerDao.findAll(), "Veriler çekildi");
 	}
 
+
 	@Override
 	public Result add(Employer employer) {
 		// TODO Auto-generated method stub
-		this.employerDao.save(employer);
-		return new SuccessResult("Veri eklendi");
+		employerDao.save(employer);
+		return new SuccessResult("veri kaydedildi");
 	}
 
 

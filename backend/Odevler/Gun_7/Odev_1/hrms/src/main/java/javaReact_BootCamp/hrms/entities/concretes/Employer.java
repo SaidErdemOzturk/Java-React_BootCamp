@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -24,13 +26,10 @@ import lombok.NonNull;
 @NoArgsConstructor
 @Table(name="employers")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","adverts"})
-@PrimaryKeyJoinColumn(name="employer_id", referencedColumnName = "id")
-@EqualsAndHashCode(callSuper=false)
-public class Employer {
+@PrimaryKeyJoinColumn(name = "employer_id", referencedColumnName = "id")
+@EqualsAndHashCode(callSuper=true)
+public class Employer extends User {
 	
-	@Id
-	@Column(name="employer_id")
-	private int employerId;
 	
 	@Column(name="company_name")
 	private String companyName;

@@ -32,9 +32,4 @@ public class UserController {
 	public DataResult<List<User>> getAll(){
 		return this.userService.getAll();
 	}
-	
-	@PostMapping("/add")
-	public Result add(@RequestBody User user) {
-		return this.userService.add(user);
-	}
 }
