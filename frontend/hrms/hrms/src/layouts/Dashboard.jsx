@@ -1,5 +1,6 @@
 import React from 'react'
-import HomePage from '../pages/HomePage'
+import RegisterCandidate from '../pages/RegisterCandidate'
+import RegisterEmployer from '../pages/RegisterEmployer'
 import { Route,Routes} from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,9 +14,9 @@ export default function Dashboard() {
         
         <Container>
             <Routes>
-            <Route exact path="/" element={<HomePage/>} />
-            <Route exact path="/loginpage" element={<LoginPage/>}/>
-            <Route exact path="/employers" element={<EmployerList/>}/>
+            <Route exact path="/RegisterCandidate" element={<RegisterCandidate/>} />
+            <Route exact path="/" element={<LoginPage/>}/>
+            <Route exact path="/RegisterEmployer" element={<RegisterEmployer/>}/>
             </Routes>
            
 
