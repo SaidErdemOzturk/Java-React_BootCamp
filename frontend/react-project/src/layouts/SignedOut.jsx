@@ -6,7 +6,7 @@ function SignedOut(props) {
     
     <>
       <Button onClick={props.signIn}>Giriş yap</Button>
-       <Button type="submit" style={{marginLeft:"0.5em"}}>Kayıt ol</Button>{' '}
+       <Button type="submit" style={{marginLeft:"0.5em"}} href="/productadd">Kayıt ol</Button>{' '}
     </>
   );
   

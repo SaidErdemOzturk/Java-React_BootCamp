@@ -10,27 +10,24 @@ import ProductDetail from '../pages/ProductDetail';
 import CartDetail from '../pages/CartDetail';
 
 import { ToastContainer, toast } from 'react-toastify';
+import ProductAdd from '../pages/ProductAdd';
 export default function DashBoard() {
   return (
     <div>
       <ToastContainer />
-      <Container>
-        <Row>
-          <Col sm={2}>
-            <Categories />
-          </Col>
-          <Col sm={10}>
+
+            <Row>
+              <Col sm="2"> <Categories /></Col>
+            
+            <Col sm="10">
             <Routes>
             <Route path="/" element={<ProductList/>} />
             <Route path="/products/:id" element={<ProductDetail/>} />
             <Route path="/cart" element={<CartDetail/>} />
+            <Route path="/productadd" element={<ProductAdd/>} />
             </Routes>
-           
-          </Col>
-        </Row>
-
-
-      </Container>
+            </Col>
+            </Row>
 
     </div>
 

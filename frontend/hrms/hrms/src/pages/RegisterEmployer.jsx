@@ -1,161 +1,168 @@
 import React, { useEffect, useState } from 'react'
-import Button from 'react-bootstrap/Button';
+import {FormControl, FormLabel, FormGroup,Button} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+
 import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
-import { Formik } from 'formik';
+import { Formik, Field, Form, useFormik } from 'formik';
 import CandidateService from '../services/candidateService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 
-const schema = yup.object().shape({
-    companyName: yup.string().required(),
-    webSite: yup.string().required(),
-  email: yup.string().required(),
-  password: yup.string().required(),
-  phoneNumber: yup.string().required(),
+const validationSchema = yup.object().shape({
+  companyName: yup.string().required('Required companyName'),
+  webSite: yup.string().required('Required webSite'),
+  email: yup.string().email('Invalid email format').required('required email'),
+  password: yup.string().required('Required password'),
+  phoneNumber: yup.string().required('Required phoneNumber'),
 
 
 });
-
-const register = ()=>{
+const initialValues = {
+  companyName: '',
+  webSite: '',
+  email: '',
+  password: '',
+  phoneNumber: '',
 
 }
-export default function RegisterEmployer() {
+let candidateService = new CandidateService;
+
+const onSubmit = values =>{
+  candidateService.add(values);
+  toast.success("bum kayıt başarılı")
+
+}
+
+
+
+export default function RegisterCandidate() {
+  const [post, setPost] = useState({})
+
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  
+  })
+
 
   return (
     <div>
-      <Formik
-        validationSchema={schema}
-        onSubmit={console.log}
-        initialValues={{
-            companyName: '',
-            webSite:'',
-        }}
-      >
-        {({
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          values,
-          touched,
-          isValid,
-          errors,
-        }) => (
-          <Form onSubmit={handleSubmit}>
-            <Row className="mb-6">
-              <Form.Group
-                as={Col}
-                md="6"
-                controlId="validationFormik101"
-                className="position-relative"
-              >
-                <Form.Label>Company name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="companyName"
-                  value={values.companyName}
-                  onChange={handleChange}
-                  isValid={touched.companyName && !errors.companyName}
-                />
-                <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group
-                as={Col}
-                md="6"
-                controlId="validationFormik102"
-                className="position-relative"
-              >
-                <Form.Label>Web Site</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="webSite"
-                  value={values.webSite}
-                  onChange={handleChange}
-                  isValid={touched.webSite && !errors.webSite}
-                />
 
-                <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Row className="mb-3">
-              <Form.Group
-                as={Col}
-                md="6"
-                controlId="validationFormik103"
-                className="position-relative"
-              >
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  isInvalid={!!errors.email}
-                />
+      <form onSubmit={formik.handleSubmit}>
+        <Row className="mb-6">
+          <FormGroup
+            as={Col}
+            md="6"
+            controlId="validationFormik101"
+            className="position-relative"
+          >
+            <FormLabel>companyName</FormLabel>
+            <FormControl
+              type="text"
+              name="companyName"
+              value={formik.values.companyName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isValid={formik.touched.companyName && !formik.errors.companyName}
+              isInvalid={formik.touched.companyName && formik.errors.companyName}
+              
+            />
+          toast.success("bum kayıt başarılı")
+            {formik.touched.companyName && formik.errors.companyName ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.companyName}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+          </FormGroup>
+          <FormGroup
+            as={Col}
+            md="6"
+            controlId="validationFormik102"
+            className="position-relative"
+          >
+            <FormLabel>webSite</FormLabel>
+            <FormControl
+              type="text"
+              name="webSite"
+              value={formik.values.webSite}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isValid={formik.touched.webSite && !formik.errors.webSite}
+              isInvalid={formik.touched.webSite && formik.errors.webSite}
+            />
+            {formik.touched.webSite && formik.errors.webSite ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.webSite}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+           
+           
+          </FormGroup>
+        </Row>
+        <Row className="mb-3">
+          <FormGroup
+            as={Col}
+            md="6"
+            controlId="validationFormik103"
+            className="position-relative"
+          >
+            <FormLabel>Email</FormLabel>
+            <FormControl
+              type="text"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isValid={formik.touched.email && !formik.errors.email}
+              isInvalid={formik.touched.email && formik.errors.email}
+            />
 
-                <Form.Control.Feedback type="invalid" tooltip>
-                  {errors.email}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group
-                as={Col}
-                md="6"
-                controlId="validationFormik104"
-                className="position-relative"
-              >
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="Password"
-                  placeholder="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  isInvalid={!!errors.password}
-                />
-                <Form.Control.Feedback type="invalid" tooltip>
-                  {errors.password}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group
-                as={Col}
-                md="12"
-                controlId="validationFormik105"
-                className="position-relative"
-              >
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Phone Number"
-                  name="phoneNumber"
-                  value={values.identifierNumber}
-                  onChange={handleChange}
-                  isInvalid={!!errors.identifierNumber}
-                  style={{width:"50%",margin:"auto"}}
-                />
+            {formik.touched.email && formik.errors.email ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.email}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+          </FormGroup>
+          <FormGroup
+            as={Col}
+            md="6"
+            controlId="validationFormik104"
+            className="position-relative"
+          >
+            <FormLabel>Password</FormLabel>
+            <FormControl
+              type="text"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isValid={formik.touched.password && !formik.errors.password}
+              isInvalid={formik.touched.password && formik.errors.password}
+            />
 
-                <Form.Control.Feedback type="invalid" tooltip>
-                  {errors.identifierNumber}
-                </Form.Control.Feedback>
-              </Form.Group>
+            {formik.touched.password && formik.errors.password ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.password}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+          </FormGroup>
+          <FormGroup
+            as={Col}
+            md="8"
+            controlId="validationFormik105"
+            className="position-relative"
+          >
+            <FormLabel>phoneNumber</FormLabel>
+            <FormControl
+              type="text"
+              name="phoneNumber"
+              value={formik.values.phoneNumber}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isValid={formik.touched.phoneNumber && !formik.errors.phoneNumber}
+              isInvalid={formik.touched.phoneNumber && formik.errors.phoneNumber}
+            />
 
-            </Row>
-            <Form.Group
-              controlId="validationFormik105"
-              className="position-relative"
-            >
-              <Button type="submit" onSubmit={handleSubmit} style={{width:"50%"}}>Register</Button>
-            </Form.Group>
+            {formik.touched.phoneNumber && formik.errors.phoneNumber ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.phoneNumber}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+          </FormGroup>
+        </Row>
+        <FormGroup
+          className="position-relative"
+        >
+          <Button type="submit" style={{ width: "50%" }}>Kayıt Ol</Button>
+        </FormGroup>
 
-
-
-          </Form>
-        )}
-      </Formik>
+      </form>
     </div>
   )
 }

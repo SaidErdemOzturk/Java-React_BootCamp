@@ -15,7 +15,7 @@ export default function Dashboard() {
         <Container>
             <Routes>
             <Route exact path="/RegisterCandidate" element={<RegisterCandidate/>} />
-            <Route exact path="/" element={<LoginPage/>}/>
+            <Route exact path="/loginpage" element={<LoginPage/>}/>
             <Route exact path="/RegisterEmployer" element={<RegisterEmployer/>}/>
             </Routes>
            
