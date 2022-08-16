@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javaReact_BootCamp.hrms.business.abstracts.UserService;
@@ -31,5 +32,10 @@ public class UserController {
 	@GetMapping("/getall")
 	public DataResult<List<User>> getAll(){
 		return this.userService.getAll();
+	}
+	
+	@GetMapping("/login")
+	public DataResult<User> login(@RequestParam String email,String password){
+		return this.userService.login(email, password);
 	}
 }

@@ -38,4 +38,11 @@ public class UserManager implements UserService {
 		return new SuccessResult("veri eklendi");
 	}
 
+	@Override
+	public DataResult<User> login(String email, String password) {
+		// TODO Auto-generated method stub
+		
+		return new SuccessDataResult<User>(userDao.getByEmailAndPassword(email, password), "Giriş yapıldı");
+	}
+
 }

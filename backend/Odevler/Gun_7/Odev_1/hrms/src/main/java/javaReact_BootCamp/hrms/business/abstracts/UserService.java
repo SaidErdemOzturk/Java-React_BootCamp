@@ -9,4 +9,6 @@ import javaReact_BootCamp.hrms.entities.concretes.User;
 public interface UserService {
 	DataResult<List<User>> getAll();
 	Result add(User user);
+	
+	DataResult<User> login(String email,String password);
 }
