@@ -3,7 +3,8 @@ import RegisterCandidate from '../pages/RegisterCandidate'
 import RegisterEmployer from '../pages/RegisterEmployer'
 import { Route,Routes} from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import LoginPage from '../pages/LoginPage';
+import CandidateLoginPage from '../pages/CandidateLoginPage';
+import CandidateHomePage from '../pages/CandidateHomePage';
 
 export default function Dashboard() {
   return (
@@ -11,9 +12,10 @@ export default function Dashboard() {
         
         <Container>
             <Routes>
-            <Route exact path="/RegisterCandidate" element={<RegisterCandidate/>} />
-            <Route exact path="/loginpage" element={<LoginPage/>}/>
-            <Route exact path="/RegisterEmployer" element={<RegisterEmployer/>}/>
+            <Route exact path="/registercandidate" element={<RegisterCandidate/>} />
+            <Route exact path="/candidateloginpage" element={<CandidateLoginPage/>}/>
+            <Route exact path="/registeremployer" element={<RegisterEmployer/>}/>
+            <Route exact path="/candidatehomepage" element={<CandidateHomePage/>}/>
             </Routes>
            
 

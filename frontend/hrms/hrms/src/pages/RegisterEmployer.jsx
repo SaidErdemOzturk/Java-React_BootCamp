@@ -8,6 +8,7 @@ import { Formik, Field, Form, useFormik } from 'formik';
 import CandidateService from '../services/candidateService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import EmployerService from '../services/employerService';
 
 
 
@@ -29,20 +30,20 @@ const initialValues = {
   phoneNumber: '',
 
 }
-let candidateService = new CandidateService;
+let employerService = new EmployerService;
 
 const onSubmit = values =>{
-  candidateService.add(values);
-  toast.success("bum kayıt başarılı")
+  employerService.add(values).then(response =>{
+    if(response.data.success){
+      toast.success(response.data.message)
+    }else{
+      toast.error(response.data.message)
+    }
+  })
 
 }
-
-
-
 export default function RegisterCandidate() {
   const [post, setPost] = useState({})
-
-
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -73,7 +74,6 @@ export default function RegisterCandidate() {
               isInvalid={formik.touched.companyName && formik.errors.companyName}
               
             />
-          toast.success("bum kayıt başarılı")
             {formik.touched.companyName && formik.errors.companyName ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.companyName}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
           </FormGroup>
           <FormGroup

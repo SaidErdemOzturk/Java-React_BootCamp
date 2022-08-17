@@ -24,6 +24,7 @@ export default function Navi() {
 
   function handleSignIn(params){
     setisAuthenticated(true)
+
   }
   return (
     
@@ -39,7 +40,7 @@ export default function Navi() {
        
         </Nav>
         {cartItems.length>0&&<CartSummary/>}
-       {isAuthenticated?<SignedIn signOut={handleSignOut} />:<SignedOut signIn={handleSignIn}/>}
+       {isAuthenticated?<SignedIn signOut={handleSignOut()} />:<SignedOut signIn={handleSignIn}/>}
       </Container>
     
     </Navbar>

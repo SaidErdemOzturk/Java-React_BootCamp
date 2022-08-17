@@ -6,7 +6,8 @@ import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik, Field, Form, useFormik } from 'formik';
 import CandidateService from '../services/candidateService';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -28,13 +29,18 @@ const initialValues = {
   identifierNumber: '',
   birthDay: '',
 }
+
 let candidateService = new CandidateService;
-
 const onSubmit = values =>{
-candidateService.add(values);
+  candidateService.add(values).then(response =>{
+    if(response.data.success){
+      toast.success(response.data.message)
+    }else{
+      toast.error(response.data.message)
+    }
+  })
+
 }
-
-
 
 export default function RegisterCandidate() {
   const [post, setPost] = useState({})
@@ -44,10 +50,7 @@ export default function RegisterCandidate() {
     initialValues,
     onSubmit,
     validationSchema,
-  
   })
-
-
   return (
     <div>
 
