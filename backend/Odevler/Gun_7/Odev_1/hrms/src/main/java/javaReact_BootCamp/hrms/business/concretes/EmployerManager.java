@@ -13,6 +13,7 @@ import javaReact_BootCamp.hrms.core.utilites.result.Result;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessDataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessResult;
 import javaReact_BootCamp.hrms.dataAccess.abstracts.EmployerDao;
+import javaReact_BootCamp.hrms.dataAccess.abstracts.UserDao;
 import javaReact_BootCamp.hrms.entities.concretes.Advert;
 import javaReact_BootCamp.hrms.entities.concretes.Candidate;
 import javaReact_BootCamp.hrms.entities.concretes.Employer;
@@ -20,12 +21,14 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 @Service
 public class EmployerManager implements EmployerService {
 	private EmployerDao employerDao;
+	private UserDao userDao;
 	
 	@Autowired
-	public EmployerManager(EmployerDao employerDao) {
+	public EmployerManager(EmployerDao employerDao,UserDao userDao) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.employerDao = employerDao;
+		this.userDao = userDao;
 	}
 	
 	
@@ -60,12 +63,14 @@ public class EmployerManager implements EmployerService {
 			return new ErrorDataResult<>("Bu id ile biri bulunamadı");
 		}		
 	}
+	
 
 	private boolean checkEmail(Employer employer) {
 		// TODO Auto-generated method stub
-		if(this.employerDao.getByEmail(employer.getEmail())==null) {
+		if(this.userDao.getByEmail(employer.getEmail())==null) {
 			return true;
 		}else {
+			System.out.println(employer.getEmail());
 			return false;
 		}
 	}

@@ -11,5 +11,4 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 import javaReact_BootCamp.hrms.entities.dtos.EmployerWithUserDto;
 
 public interface EmployerDao extends JpaRepository<Employer,Integer >{	
-	Employer getByEmail(String email);
 }

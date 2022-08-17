@@ -13,6 +13,7 @@ import javaReact_BootCamp.hrms.core.utilites.result.Result;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessResult;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessDataResult;
 import javaReact_BootCamp.hrms.dataAccess.abstracts.CandidateDao;
+import javaReact_BootCamp.hrms.dataAccess.abstracts.UserDao;
 import javaReact_BootCamp.hrms.entities.concretes.Candidate;
 import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
@@ -20,11 +21,14 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 public class CandidateManager implements CandidateService {
 
 	private CandidateDao candidateDao;
+	private UserDao userDao;
+	
 	@Autowired
-	public CandidateManager(CandidateDao candidateDao) {
+	public CandidateManager(CandidateDao candidateDao,UserDao userDao) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.candidateDao = candidateDao;
+		this.userDao = userDao;
 	}
 	
 	@Override
@@ -58,7 +62,7 @@ public class CandidateManager implements CandidateService {
 	}
 	
 	private boolean checkEmail(Candidate candidate) {
-		if(this.candidateDao.getByEmail(candidate.getEmail())==null) {
+		if(this.userDao.getByEmail(candidate.getEmail())==null) {
 			return true;
 		}else {
 			return false;
