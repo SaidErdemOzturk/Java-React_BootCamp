@@ -8,5 +8,8 @@ import javaReact_BootCamp.hrms.entities.concretes.Candidate;
 
 public interface CandidateService {
 	DataResult<List<Candidate>> getAll();
+	
 	Result add(Candidate candidate);
+	
+	DataResult<Candidate> getById(Integer id);
 }

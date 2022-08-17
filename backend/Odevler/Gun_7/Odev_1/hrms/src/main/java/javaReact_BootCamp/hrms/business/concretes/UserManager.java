@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javaReact_BootCamp.hrms.business.abstracts.UserService;
 import javaReact_BootCamp.hrms.core.utilites.result.DataResult;
+import javaReact_BootCamp.hrms.core.utilites.result.ErrorDataResult;
+import javaReact_BootCamp.hrms.core.utilites.result.ErrorResult;
 import javaReact_BootCamp.hrms.core.utilites.result.Result;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessDataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessResult;
@@ -28,21 +30,26 @@ public class UserManager implements UserService {
 	@Override
 	public DataResult<List<User>> getAll() {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "veriler çekildi");
-	}
-
-	@Override
-	public Result add(User user) {
-		// TODO Auto-generated method stub
-		this.userDao.save(user);
-		return new SuccessResult("veri eklendi");
+		List<User> result = userDao.findAll();
+		if(result != null) {
+			return new SuccessDataResult<List<User>>(result, "veri");
+		}else {
+			return new ErrorDataResult<>("Veri bulunamadı");
+		}
 	}
 
 	@Override
 	public DataResult<User> login(String email, String password) {
 		// TODO Auto-generated method stub
+		User result = userDao.getByEmailAndPassword(email, password);
+		if(result != null) {
+			return new SuccessDataResult<User>(result, "Giriş yapıldı");
+		}else {
+			return new ErrorDataResult<>("Email veya şifre hatalı");
+		}
 		
-		return new SuccessDataResult<User>(userDao.getByEmailAndPassword(email, password), "Giriş yapıldı");
 	}
+
+
 
 }

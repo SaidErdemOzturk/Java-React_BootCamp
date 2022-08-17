@@ -16,5 +16,11 @@ public class ErrorDataResult<T> extends DataResult{
 		super(null, false);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public ErrorDataResult(String message) {
+		super(null, false,message);
+		// TODO Auto-generated constructor stub
+	}
+
 
 }

@@ -12,4 +12,7 @@ public interface CandidateDao extends JpaRepository<Candidate, Integer>{
 
 	//@Query("Select new javaReact_BootCamp.hrms.entities.dtos.CandidateWithCurriculumVitaeDto(c1.id, c2.candidate_id, c1.categoryName) From Candidate c1 Inner Join c1.curriculumVitaes c2")
 	//List<CandidateWithCurriculumVitaeDto> getCandidateWithCurriculumVitaeDetails();
+	
+	Candidate getByEmail(String email);
+	
 }

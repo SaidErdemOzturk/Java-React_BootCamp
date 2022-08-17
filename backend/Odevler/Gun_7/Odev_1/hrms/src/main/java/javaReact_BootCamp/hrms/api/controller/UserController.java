@@ -1,8 +1,10 @@
 package javaReact_BootCamp.hrms.api.controller;
 
+import java.io.Console;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,7 @@ import javaReact_BootCamp.hrms.entities.concretes.User;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin
 public class UserController {
 	private UserService userService;
 	public UserController() {
@@ -37,5 +40,6 @@ public class UserController {
 	@GetMapping("/login")
 	public DataResult<User> login(@RequestParam String email,String password){
 		return this.userService.login(email, password);
+		
 	}
 }
