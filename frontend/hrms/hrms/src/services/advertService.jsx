@@ -1,5 +1,5 @@
 import axios from 'axios'
-export default class userService{
+export default class AdvertService{
 
     getAll(){
         return axios.get("http://localhost:8080/api/advert/getall")
@@ -16,5 +16,8 @@ export default class userService{
     }
     getAllSortedWithDate(){
         return axios.get("http://localhost:8080/api/advert/getallsortedwithdate")
+    }
+    findById(id){
+        return axios.get(`http://localhost:8080/api/advert/getbyid?id=${id}`)
     }
 }
