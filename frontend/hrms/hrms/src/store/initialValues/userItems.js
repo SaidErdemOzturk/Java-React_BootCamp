@@ -1,0 +1,1 @@
+export const userItems={id:0,email:"",password:"",firstName:"",lastName:"",birthDay:""}
