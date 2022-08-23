@@ -8,6 +8,7 @@ import { Formik, Field, Form, useFormik } from 'formik';
 import CandidateService from '../services/candidateService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -31,21 +32,20 @@ const initialValues = {
 }
 
 let candidateService = new CandidateService;
-const onSubmit = values =>{
-  candidateService.add(values).then(response =>{
-    if(response.data.success){
-      toast.success(response.data.message)
-    }else{
-      toast.error(response.data.message)
-    }
-  })
-
-}
 
 export default function RegisterCandidate() {
-  const [post, setPost] = useState({})
+  let navigate = useNavigate();
 
-
+  const onSubmit = values =>{
+    candidateService.add(values).then(response =>{
+      if(response.data.success){
+        toast.success(response.data.message+"Giriş sayfasına yönlendiriliyorsunuz")
+        navigate("/candidateloginpage");
+      }else{
+        toast.error(response.data.message)
+      }
+    })
+  }
   const formik = useFormik({
     initialValues,
     onSubmit,

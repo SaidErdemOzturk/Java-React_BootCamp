@@ -44,6 +44,9 @@ const onSubmit = values =>{
 }
 export default function RegisterCandidate() {
   const [post, setPost] = useState({})
+
+
+  
   const formik = useFormik({
     initialValues,
     onSubmit,

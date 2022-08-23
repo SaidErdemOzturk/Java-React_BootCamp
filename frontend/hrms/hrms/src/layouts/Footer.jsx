@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 export default function Footer() {
   return (
     <div>
-         <Card style={{marginTop:"30em"}}>
+         <Card style={{marginTop:"5em",clear:"both"}}>
       <Card.Header as="h5" >FOOTER</Card.Header>
       <Card.Body>
         <Card.Title>Special title treatment</Card.Title>

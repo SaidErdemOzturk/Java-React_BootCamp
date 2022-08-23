@@ -8,7 +8,9 @@ import UserService from '../services/userService';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import {useDispatch} from "react-redux"
+import { login } from '../store/actions/userActions';
 
 
 
@@ -26,21 +28,25 @@ const initialValues = {
 }
 let userService = new UserService();
 
-const onSubmit = values =>{
-  
-  userService.login(values).then(response=>{
-    if(response.data.success){
-      toast.success(response.data.message)
-      
-    }else{
-      toast.errors(response.data.message)
-    }
-  })
-}
-
-
-
 export default function CandidateLoginPage() {
+
+  const dispatch = useDispatch()
+  const {user} = useSelector(state=>state);
+  let navigate = useNavigate();
+
+ const onSubmit = values =>{
+  
+    userService.login(values).then(response=>{
+      if(response.data.success){
+        toast.success(response.data.message)
+        dispatch(login(response.data.data));
+        navigate("/candidatehomepage")
+      }else{
+        toast.error(response.data.message)
+      }
+    })
+  }
+
 
   const formik = useFormik({
     initialValues,
