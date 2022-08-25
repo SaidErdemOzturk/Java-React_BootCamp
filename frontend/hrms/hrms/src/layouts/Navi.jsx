@@ -8,9 +8,14 @@ import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
+import { candidateItems } from '../store/initialValues/candidateItems';
 
 export default function Navi() {
-  const {user} = useSelector(state=>state)
+
+  const {candidate} = useSelector(state=>state)
+  const {employer} = useSelector(state=>state)
+
+
   let navigate = useNavigate();
   function handleHome(){
     navigate("/")
@@ -38,7 +43,7 @@ export default function Navi() {
               <Nav.Link onClick={handleCandidates}>Candidates</Nav.Link>
               <Nav.Link onClick={handleEmployers}>Employers</Nav.Link>
             </Nav>
-            {user.userItems.email!=''?<SignedIn/>:<SignedOut/>}
+            {candidate.candidateItems.id===0&&employer.employerItems.id=== 0?<SignedOut/>:<SignedIn/>}
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../store/actions/userActions';
+import { employerLogout } from '../store/actions/employerActions';
+import { candidateLogout } from '../store/actions/candidateActions';
 import { useNavigate } from 'react-router-dom';
 
 
 export default function SignedIn(signOut) {
   const dispatch = useDispatch()
-  const { user } = useSelector(state => state)
+  const { candidate } = useSelector(state => state)
+  const { employer } = useSelector(state => state)
   let navigate = useNavigate();
   const handleSignOut = () => {
-    console.log(user)
-    dispatch(logout())
-    console.log(user)
-    navigate("/")
-  }
+    if (candidate.candidateItems.id!=0) {
+      dispatch(candidateLogout())
+      navigate("/")
+    } else {
+      dispatch(employerLogout())
+      navigate("/")
 
+    }
+  }
 
   return (
     <div>
       <Dropdown>
-        <Image roundedCircle="true" style={{ height: "3em", width: "3em", marginLeft: "0.5em" }} src='https://bczl.meb.k12.tr/meb_iys_dosyalar/34/06/969693/resimler/2021_04/k_02102337_2118fbf0-51e6-477f-b6f7-175761b15217.jpg'></Image>
+        <Image roundedCircle="true" style={{ height: "3em", width: "3em", marginLeft: "0.5em" }} src={candidate.candidateItems.id!=0? candidate.candidateItems.candidateImage:employer.employerItems.employerImage}  ></Image >
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="link">
         </Dropdown.Toggle>
 
@@ -32,7 +37,7 @@ export default function SignedIn(signOut) {
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleSignOut} >Çıkış yap</Dropdown.Item>
         </Dropdown.Menu>
-      </Dropdown>
-    </div>
+      </Dropdown >
+    </div >
   )
 }

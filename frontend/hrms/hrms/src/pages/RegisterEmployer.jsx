@@ -9,6 +9,7 @@ import CandidateService from '../services/candidateService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EmployerService from '../services/employerService';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -31,20 +32,23 @@ const initialValues = {
 
 }
 let employerService = new EmployerService;
-
-const onSubmit = values =>{
-  employerService.add(values).then(response =>{
-    if(response.data.success){
-      toast.success(response.data.message)
-    }else{
-      toast.error(response.data.message)
-    }
-  })
-
-}
 export default function RegisterCandidate() {
+let navigate = useNavigate();
   const [post, setPost] = useState({})
+  const onSubmit = values =>{
 
+
+    employerService.add(values).then(response =>{
+      if(response.data.success){
+        toast.success(response.data.message)
+        navigate("/candidateloginpage");
+  
+      }else{
+        toast.error(response.data.message)
+      }
+    })
+  
+  }
 
   
   const formik = useFormik({

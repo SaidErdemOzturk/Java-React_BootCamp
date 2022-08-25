@@ -14,7 +14,7 @@ export default function SignedOut(singIn) {
 
           <Dropdown.Menu>
             <Dropdown.Item href="/candidateloginpage">Candidate</Dropdown.Item>
-            <Dropdown.Item href="/registeremployer">Employer</Dropdown.Item>
+            <Dropdown.Item href="/employerloginpage">Employer</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>

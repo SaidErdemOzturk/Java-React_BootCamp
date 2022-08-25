@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import {useDispatch} from "react-redux"
-import { login } from '../store/actions/userActions';
+import {candidateLogin} from '../store/actions/candidateActions';
 
 
 
@@ -39,7 +39,8 @@ export default function CandidateLoginPage() {
     userService.login(values).then(response=>{
       if(response.data.success){
         toast.success(response.data.message)
-        dispatch(login(response.data.data));
+        console.log(response.data.data);
+       dispatch(candidateLogin(response.data.data));
         navigate("/candidatehomepage")
       }else{
         toast.error(response.data.message)

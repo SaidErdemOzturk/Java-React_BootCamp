@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import {useDispatch} from "react-redux"
-import { login } from '../store/actions/userActions';
+import { employerLogin } from '../store/actions/employerActions';
 
 
 const validationSchema = yup.object().shape({
@@ -32,12 +32,13 @@ export default function EmployerLoginPage() {
   const {user} = useSelector(state=>state);
   let navigate = useNavigate();
 
- const onSubmit = values =>{
+  const onSubmit = values =>{
   
     userService.login(values).then(response=>{
       if(response.data.success){
         toast.success(response.data.message)
-        dispatch(login(response.data));
+        console.log(response.data.data);
+       dispatch(employerLogin(response.data.data));
         navigate("/employerhomepage")
       }else{
         toast.error(response.data.message)

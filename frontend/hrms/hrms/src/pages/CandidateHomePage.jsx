@@ -9,10 +9,10 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
 export default function CandidateHomePage() {
-  const {user} = useSelector(state=>state);  
+  const {candidate} = useSelector(state=>state);  
   let navigate = useNavigate()
   useEffect(() => {
-    if(user.userItems.id==0){
+    if(candidate.candidateItems.id==0){
       navigate("/candidateloginpage")
     }
   }, [])
