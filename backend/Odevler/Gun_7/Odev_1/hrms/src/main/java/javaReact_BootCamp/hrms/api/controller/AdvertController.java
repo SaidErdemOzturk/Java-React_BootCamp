@@ -23,12 +23,14 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 @RequestMapping("/api/advert")
 @CrossOrigin
 public class AdvertController {
+	
 	private AdvertService advertService;
 	public AdvertController() {
 		// TODO Auto-generated constructor stub
 	}
 	@Autowired
 	public AdvertController(AdvertService advertService) {
+		super();
 		this.advertService=advertService;
 	}
 	
@@ -37,7 +39,7 @@ public class AdvertController {
 		return this.advertService.getAll();
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public Result add(@RequestBody Advert advert) {
 		return this.advertService.add(advert);
 	}
@@ -48,9 +50,9 @@ public class AdvertController {
 		return this.advertService.getAllSortedWithDate();
 	}
 	
-	@GetMapping("/getbyemployerid")
-	public DataResult<List<Advert>> getByEmployerId(@RequestParam int employerId){
-		return this.advertService.getByEmployerId(employerId);
+	@GetMapping("/findbyemployerid")
+	public DataResult<List<Advert>> findByEmployerId(@RequestParam int employerId){
+		return this.advertService.findByEmployer(employerId);
 	}
 	
 	@GetMapping("/getbyisactivate")
@@ -60,6 +62,16 @@ public class AdvertController {
 	@PutMapping("/updateadvert")
 	public Result update(@RequestBody Advert advert) {
 		return this.advertService.update(advert);
+	}
+	@GetMapping("/getbyid")
+	public DataResult<Advert> findById(@RequestParam int id){
+		return this.advertService.findById(id);
+		
+	}
+	
+	@GetMapping("/getbyemployerid")
+	public DataResult<List<Advert>> getByEmployer(@RequestParam int employerId){
+		return this.advertService.getByEmployer(employerId);
 	}
 	
 }

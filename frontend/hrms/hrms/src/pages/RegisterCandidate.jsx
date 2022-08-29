@@ -59,7 +59,6 @@ export default function RegisterCandidate() {
           <FormGroup
             as={Col}
             md="6"
-            controlId="validationFormik101"
             className="position-relative"
           >
             <FormLabel>First name</FormLabel>
@@ -78,7 +77,6 @@ export default function RegisterCandidate() {
           <FormGroup
             as={Col}
             md="6"
-            controlId="validationFormik102"
             className="position-relative"
           >
             <FormLabel>Last name</FormLabel>
@@ -100,7 +98,6 @@ export default function RegisterCandidate() {
           <FormGroup
             as={Col}
             md="6"
-            controlId="validationFormik103"
             className="position-relative"
           >
             <FormLabel>Email</FormLabel>
@@ -119,7 +116,6 @@ export default function RegisterCandidate() {
           <FormGroup
             as={Col}
             md="6"
-            controlId="validationFormik104"
             className="position-relative"
           >
             <FormLabel>Password</FormLabel>
@@ -138,7 +134,6 @@ export default function RegisterCandidate() {
           <FormGroup
             as={Col}
             md="8"
-            controlId="validationFormik105"
             className="position-relative"
           >
             <FormLabel>Identifier Number</FormLabel>

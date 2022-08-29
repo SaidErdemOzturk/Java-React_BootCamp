@@ -8,9 +8,17 @@ export default class AdvertService{
     getByIsActive(){        
         return axios.get("http://localhost:8080/api/advert/getbyisactivate")
     }
-    add(){
+    add(values){
+        
+        values.active=true
+        if(values.imageUrl===""){
+            values.imageUrl="https://www.turquagroup.com.tr/images/blog/blog_FCF81632-9A97-47DA-997B-2201C790A954.jpg"
 
+        }
+        console.log(values)
+        return axios.post("http://localhost:8080/api/advert/add",values)
     }
+
     getByEmployerId(id){
         return axios.get(`http://localhost:8080/api/advert/getbyemployerid?employerId=${id}`)
     }

@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import AdvertsDetail from '../pages/AdvertsDetail';
 import AdvertsList from '../pages/AdvertsList';
 import EmployerLoginPage from '../pages/EmployerLoginPage';
+import EmployerHomePage from '../pages/EmployerHomePage';
+import AdvertsAdd from '../pages/AdvertsAdd';
 
 
 export default function Dashboard() {
@@ -23,11 +25,12 @@ export default function Dashboard() {
           <Route exact path="/candidateloginpage" element={<CandidateLoginPage />} />
           <Route exact path="/registeremployer" element={<RegisterEmployer />} />
           <Route path="/"element={<HomePage/>}/>
-          <Route exact path="/candidatehomepage" element={<CandidateHomePage />} /> 
+          <Route exact path="/employerhomepage" element={<EmployerHomePage />} /> 
           <Route exact path="/adverts/:id" element={<AdvertsDetail/>} /> 
           {/* buradaki :id advertsDetails kısmındaki useParams ile eşleşiyor. */ }
           <Route exact path="/employerloginpage" element={<EmployerLoginPage />} />
           <Route exact path="/adverts" element={<AdvertsList/>} />
+          <Route exact path="/advertadd" element={<AdvertsAdd/>} />
         </Routes>
 
 
