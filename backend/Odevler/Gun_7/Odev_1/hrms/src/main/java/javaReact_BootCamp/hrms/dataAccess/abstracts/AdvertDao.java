@@ -9,10 +9,12 @@ import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
 public interface AdvertDao extends JpaRepository<Advert, Integer> {
 	
-	List<Advert> getByEmployer(int employerId);
+	List<Advert> findByEmployerId(int employerId);
 	
+	List<Advert> getByEmployer_Id(int employerId);
 	
-	List<Advert> getByIsActiveTrue();
-	
-	
+	List<Advert> getByActiveTrue();
+		
+	Advert findById(int id);
 }
+

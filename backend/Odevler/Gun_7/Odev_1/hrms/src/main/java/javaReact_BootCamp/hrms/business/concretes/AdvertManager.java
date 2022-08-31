@@ -49,15 +49,15 @@ public class AdvertManager implements AdvertService {
 
 	
 	@Override
-	public DataResult<List<Advert>> getByEmployerId(int employerId) {
+	public DataResult<List<Advert>> findByEmployer(int employerId) {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Advert>>(advertDao.getByEmployer(employerId), "veriler çekildi");
+		return new SuccessDataResult<List<Advert>>(advertDao.findByEmployerId(employerId), "veriler çekildi");
 	}
 
 	@Override
 	public DataResult<List<Advert>> getAllIsActive() {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Advert>>(advertDao.getByIsActiveTrue(), "veriler gösteriliyor");
+		return new SuccessDataResult<List<Advert>>(advertDao.getByActiveTrue(), "veriler gösteriliyor");
 	}
 
 	@Override
@@ -67,6 +67,17 @@ public class AdvertManager implements AdvertService {
 		return new SuccessResult("veri güncellendi");
 	}
 
+	@Override
+	public DataResult<Advert> findById(int id) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<Advert>(advertDao.findById(id), "Veri gösteriliyor");
+	}
+
+	@Override
+	public DataResult<List<Advert>> getByEmployer(int employerId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Advert>>(advertDao.getByEmployer_Id(employerId), "veriler çekildi");
+	}
 
 
 }

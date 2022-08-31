@@ -1,11 +1,14 @@
 package javaReact_BootCamp.hrms.business.concretes;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javaReact_BootCamp.hrms.business.abstracts.EmployerService;
+import javaReact_BootCamp.hrms.core.utilites.adapters.abstracts.ImageService;
+import javaReact_BootCamp.hrms.core.utilites.adapters.concretes.CloudinaryManagerAdapter;
 import javaReact_BootCamp.hrms.core.utilites.result.DataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.ErrorDataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.ErrorResult;
@@ -14,7 +17,7 @@ import javaReact_BootCamp.hrms.core.utilites.result.SuccessDataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.SuccessResult;
 import javaReact_BootCamp.hrms.dataAccess.abstracts.EmployerDao;
 import javaReact_BootCamp.hrms.dataAccess.abstracts.UserDao;
-import javaReact_BootCamp.hrms.entities.concretes.Advert;
+//import javaReact_BootCamp.hrms.entities.concretes.Advert;
 import javaReact_BootCamp.hrms.entities.concretes.Candidate;
 import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
@@ -45,7 +48,7 @@ public class EmployerManager implements EmployerService {
 		
 		if(checkEmail(employer)) {
 			employerDao.save(employer);
-			return new SuccessResult("Kullanıı oluşturuldu");
+			return new SuccessResult("Başarı ile kayıt oldunuz.");
 		}else {
 			return new ErrorResult("Bu email adresi kullanımdadır");
 		}
@@ -70,9 +73,16 @@ public class EmployerManager implements EmployerService {
 		if(this.userDao.getByEmail(employer.getEmail())==null) {
 			return true;
 		}else {
-			System.out.println(employer.getEmail());
 			return false;
 		}
+	}
+
+
+	@Override
+	public Result update(Employer employer) {
+		// TODO Auto-generated method stub
+		this.employerDao.save(employer);
+		return new SuccessResult("Veri güncellendi");
 	}
 
 

@@ -37,6 +37,9 @@ public class Advert {
 	@Column(name="city")
 	private String city;
 	
+	@Column(name="title")
+	private String title;
+	
 	@Column(name="max_wage")
 	private int maxWage;
 	
@@ -52,8 +55,12 @@ public class Advert {
 	@Column(name="starting_date")
 	private LocalDate startingDate;
 	
+	
+	@Column(name="image_url")
+	private String imageUrl;
+	
 	@Column(name="is_active")
-	private boolean isActive;
+	private boolean active;
 	
 	@ManyToOne
 	@JoinColumn(name="employer_id")

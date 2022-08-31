@@ -4,8 +4,7 @@ import java.util.List;
 
 import javaReact_BootCamp.hrms.core.utilites.result.DataResult;
 import javaReact_BootCamp.hrms.core.utilites.result.Result;
-import javaReact_BootCamp.hrms.entities.concretes.Advert;
-import javaReact_BootCamp.hrms.entities.concretes.Candidate;
+//import javaReact_BootCamp.hrms.entities.concretes.Advert;
 import javaReact_BootCamp.hrms.entities.concretes.Employer;
 
 public interface EmployerService {
@@ -14,5 +13,7 @@ public interface EmployerService {
 	Result add(Employer employer);
 	
 	DataResult<Employer> getById(Integer id);
+	
+	Result update(Employer employer);
 	
 }
