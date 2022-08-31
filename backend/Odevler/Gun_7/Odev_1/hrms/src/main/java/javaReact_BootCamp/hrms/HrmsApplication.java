@@ -1,24 +1,20 @@
 package javaReact_BootCamp.hrms;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
-import com.cloudinary.*;
-import com.cloudinary.utils.ObjectUtils;
 
 @SpringBootApplication
 
 public class HrmsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HrmsApplication.class, args);
-		
-
-		  
+	public static void main(String[] args) throws IOException {
+		SpringApplication.run(HrmsApplication.class, args);		  
+	
 	}
 	
-	
-
-
 }
