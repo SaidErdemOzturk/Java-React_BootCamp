@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import {useDispatch} from "react-redux"
-import {candidateLogin} from '../store/actions/candidateActions';
+import { login } from '../store/actions/userActions';
 
 
 
@@ -31,7 +31,6 @@ let userService = new UserService();
 export default function CandidateLoginPage() {
 
   const dispatch = useDispatch()
-  const {user} = useSelector(state=>state);
   let navigate = useNavigate();
 
  const onSubmit = values =>{
@@ -39,8 +38,8 @@ export default function CandidateLoginPage() {
     userService.login(values).then(response=>{
       if(response.data.success){
         toast.success(response.data.message)
-        console.log(response.data.data);
-       dispatch(candidateLogin(response.data.data));
+        dispatch(login(response.data.data))
+       //dispatch(candidateLogin(response.data.data));
         navigate("/candidatehomepage")
       }else{
         toast.error(response.data.message)
@@ -65,47 +64,25 @@ export default function CandidateLoginPage() {
             as={Col}
             style={{width:"50%", margin:"auto"}}
             md="6"
-            controlId="validationFormik101"
             className="position-relative"
           >
             <FormLabel>Email</FormLabel>
-            <FormControl
-              type="text"
-              name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              isValid={formik.touched.email && !formik.errors.email}
+            <FormControl className="mt-5" type="text" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} 
+             isValid={formik.touched.email && !formik.errors.email}
               isInvalid={formik.touched.email && formik.errors.email}
-              
             />
             {formik.touched.email && formik.errors.email ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.email}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
           </FormGroup>
-         
         </Row>
         <Row className="mb-3">
-
         </Row>
-        <FormGroup
-            as={Col}
-            style={{width:"50%", margin:"auto"}}
-            controlId="validationFormik102"
-            className="position-relative"
-            
-          >
+        <FormGroup as={Col} style={{width:"50%", margin:"auto"}} className="position-relative" >
             <FormLabel>Password</FormLabel>
-            <FormControl
-              type="text"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              isValid={formik.touched.password && !formik.errors.password}
+            <FormControl type="text" name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} 
+             isValid={formik.touched.password && !formik.errors.password}
               isInvalid={formik.touched.password && formik.errors.password}
             />
             {formik.touched.password && formik.errors.password ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.password}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
-           
-           
           </FormGroup>
         <FormGroup
           className="position-relative"

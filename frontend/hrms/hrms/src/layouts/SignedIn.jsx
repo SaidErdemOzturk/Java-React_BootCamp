@@ -2,31 +2,26 @@ import React, { useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { employerLogout } from '../store/actions/employerActions';
-import { candidateLogout } from '../store/actions/candidateActions';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../store/actions/userActions';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function SignedIn(signOut) {
+  const {user} = useSelector(state=>state)
   const dispatch = useDispatch()
-  const { candidate } = useSelector(state => state)
-  const { employer } = useSelector(state => state)
   let navigate = useNavigate();
   const handleSignOut = () => {
-    if (candidate.candidateItems.id!=0) {
-      dispatch(candidateLogout())
-      navigate("/")
-    } else {
-      dispatch(employerLogout())
-      navigate("/")
-
-    }
+    toast.success("çıkış başarılı")
+    navigate("/")
+    dispatch(logout())
   }
 
   return (
     <div>
       <Dropdown>
-        <Image roundedCircle="true" style={{ height: "3em", width: "3em", marginLeft: "0.5em" }} src={candidate.candidateItems.id!=0? candidate.candidateItems.candidateImage:employer.employerItems.employerImage}  ></Image >
+        {console.log(user)}
+        <Image roundedCircle="true" style={{ height: "3em", width: "3em", marginLeft: "0.5em" }} src={user.userItems.imageUrl} ></Image >
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="link">
         </Dropdown.Toggle>
 

@@ -1,1 +1,0 @@
-export const employerItems={id:0,email:"",password:"",companyName:"",webSite:"",phoneNumber:"",employerImage:""}

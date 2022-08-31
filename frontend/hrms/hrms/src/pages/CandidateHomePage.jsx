@@ -9,10 +9,9 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
 export default function CandidateHomePage() {
-  const {candidate} = useSelector(state=>state);  
   let navigate = useNavigate()
   useEffect(() => {
-    if(candidate.candidateItems.id==0){
+    if(localStorage.getItem('user')==null){
       navigate("/candidateloginpage")
     }
   }, [])
@@ -22,7 +21,7 @@ export default function CandidateHomePage() {
       <Row style={{margin:"2em"}}>
       <Col sm="12"> 
       <DropdownButton id="dropdown-item-button" title="İşlemler">
-      <Dropdown.ItemText>Yapacaığınız işlemi seçiniz</Dropdown.ItemText>
+      <Dropdown.ItemText>Yapacağınız işlemi seçiniz</Dropdown.ItemText>
       <Dropdown.Divider />
       <Dropdown.Item as="button">CV Ekle</Dropdown.Item>
       <Dropdown.Item as="button">Yeni okul ekle</Dropdown.Item>

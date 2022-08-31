@@ -1,12 +1,10 @@
 //stateleri topladığımız yer
 
 import { combineReducers } from "redux";
-import candidateReducer from "./reducers/candidateReducer";
-import employerReducer from "./reducers/employerReducer";
+import userReducer from "./reducers/userReducer";
 
 const rootReducer = combineReducers({
-    candidate : candidateReducer,
-    employer : employerReducer
+    user : userReducer
 })
 
 export default rootReducer;
