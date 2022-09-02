@@ -37,8 +37,7 @@ export default function EmployerLoginPage() {
       if(response.data.success){
         toast.success(response.data.message)
         dispatch(login(response.data.data))
-       //dispatch(employerLogin(response.data.data));
-        navigate("/employerhomepage")
+        navigate("/employer/homepage")
       }else{
         toast.error(response.data.message)
       }

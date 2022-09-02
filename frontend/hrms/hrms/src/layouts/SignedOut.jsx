@@ -2,7 +2,7 @@ import React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
-export default function SignedOut(singIn) {
+export default function SignedOut() {
   return (
     <div>
       <NavbarCollapse>
@@ -13,8 +13,8 @@ export default function SignedOut(singIn) {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="/candidateloginpage">Candidate</Dropdown.Item>
-            <Dropdown.Item href="/employerloginpage">Employer</Dropdown.Item>
+            <Dropdown.Item href="/candidate/loginpage">Candidate</Dropdown.Item>
+            <Dropdown.Item href="/employer/loginpage">Employer</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -23,8 +23,8 @@ export default function SignedOut(singIn) {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="/registercandidate">Candidate</Dropdown.Item>
-            <Dropdown.Item href="/registeremployer">Employer</Dropdown.Item>
+            <Dropdown.Item href="/candidate/register">Candidate</Dropdown.Item>
+            <Dropdown.Item href="/employer/register">Employer</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </NavbarCollapse>

@@ -39,8 +39,7 @@ export default function CandidateLoginPage() {
       if(response.data.success){
         toast.success(response.data.message)
         dispatch(login(response.data.data))
-       //dispatch(candidateLogin(response.data.data));
-        navigate("/candidatehomepage")
+        navigate("/candidate/homepage")
       }else{
         toast.error(response.data.message)
       }

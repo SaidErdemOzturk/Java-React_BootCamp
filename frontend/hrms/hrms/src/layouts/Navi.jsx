@@ -10,11 +10,17 @@ import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
 
 export default function Navi() {
-  const [user, setuser] = useState({})
 
+  const {user} = useSelector(state=>state)
   let navigate = useNavigate();
   function handleHome(){
-    navigate("/")
+    if(user.userItems==null){
+      navigate(`/`)
+
+    }else{
+    
+    navigate(`/${user.userItems.userType}/homepage`)
+    }
   }
   function handleAdverts(){
     navigate("/adverts")
@@ -30,7 +36,7 @@ export default function Navi() {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">HRMS</Navbar.Brand>
+          <Navbar.Brand onClick={handleHome}>HRMS</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

@@ -7,10 +7,15 @@ import { logout } from '../store/actions/userActions';
 import { ToastContainer, toast } from 'react-toastify';
 
 
-export default function SignedIn(signOut) {
-  const {user} = useSelector(state=>state)
+export default function SignedIn() {
   const dispatch = useDispatch()
   let navigate = useNavigate();
+  const {user} = useSelector(state=>state)
+
+  function handleProfile(){
+    navigate(`/${user.userItems.userType}/profile`)
+
+  }
   const handleSignOut = () => {
     toast.success("çıkış başarılı")
     navigate("/")
@@ -26,7 +31,7 @@ export default function SignedIn(signOut) {
         </Dropdown.Toggle>
 
         <Dropdown.Menu variant="dark">
-          <Dropdown.Item href="#/action-1" active>
+          <Dropdown.Item onClick={()=>handleProfile()} active>
             Bilgilerim
           </Dropdown.Item>
           <Dropdown.Divider />

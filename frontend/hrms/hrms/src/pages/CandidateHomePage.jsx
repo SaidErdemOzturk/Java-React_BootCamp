@@ -12,14 +12,14 @@ export default function CandidateHomePage() {
   let navigate = useNavigate()
   useEffect(() => {
     if(localStorage.getItem('user')==null){
-      navigate("/candidateloginpage")
+      navigate("/")
     }
   }, [])
    
   return (
     <div>
       <Row style={{margin:"2em"}}>
-      <Col sm="12"> 
+      <Col> 
       <DropdownButton id="dropdown-item-button" title="İşlemler">
       <Dropdown.ItemText>Yapacağınız işlemi seçiniz</Dropdown.ItemText>
       <Dropdown.Divider />
