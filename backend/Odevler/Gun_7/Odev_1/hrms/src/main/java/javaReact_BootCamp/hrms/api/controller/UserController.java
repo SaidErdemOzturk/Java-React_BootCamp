@@ -42,4 +42,9 @@ public class UserController {
 		return this.userService.login(email, password);
 		
 	}
+	
+	@GetMapping("/checkemail")
+	public DataResult<User> checkEmail(@RequestParam String email){
+		return this.userService.checkEmail(email);
+	}
 }

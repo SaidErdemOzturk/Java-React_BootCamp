@@ -1,5 +1,4 @@
-
-import { LOGIN,LOGOUT } from "../actions/userActions";
+import { LOGIN,LOGOUT,UPDATE } from "../actions/userActions";
 import { userItems } from "../initialValues/userItems";
 
 const initialState={
@@ -9,6 +8,12 @@ const initialState={
 export default function userReducer(state=initialState,{type,user}){
     switch (type) {
         case LOGIN:
+            localStorage.setItem('user',JSON.stringify(user))
+        return{
+            userItems:user
+        }
+
+        case UPDATE:
             localStorage.setItem('user',JSON.stringify(user))
         return{
             userItems:user

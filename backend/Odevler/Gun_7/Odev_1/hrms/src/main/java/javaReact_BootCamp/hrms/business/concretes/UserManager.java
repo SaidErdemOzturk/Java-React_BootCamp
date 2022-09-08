@@ -50,6 +50,19 @@ public class UserManager implements UserService {
 		
 	}
 
+	@Override
+	public DataResult<User> checkEmail(String email) {
+		// TODO Auto-generated method stub
+		User result = userDao.getByEmail(email);
+		if(result != null) {
+			return new ErrorDataResult<>("Email kullanımda");
+		}else {
+			return  new SuccessDataResult<User>(result," Email kullanılabilir.");
+			
+		}
+		
+	}
+
 
 
 }

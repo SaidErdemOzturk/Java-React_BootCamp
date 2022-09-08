@@ -16,7 +16,6 @@ import { login } from '../store/actions/userActions';
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email format').required('required email'),
   password: yup.string().required('Required password'),
-
 });
 
 
@@ -61,7 +60,6 @@ export default function EmployerLoginPage() {
             as={Col}
             style={{width:"50%", margin:"auto"}}
             md="6"
-            controlId="validationFormik101"
             className="position-relative"
           >
             <FormLabel>Email</FormLabel>
@@ -73,7 +71,6 @@ export default function EmployerLoginPage() {
               onBlur={formik.handleBlur}
               isValid={formik.touched.email && !formik.errors.email}
               isInvalid={formik.touched.email && formik.errors.email}
-              
             />
             {formik.touched.email && formik.errors.email ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.email}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
           </FormGroup>
@@ -85,7 +82,6 @@ export default function EmployerLoginPage() {
         <FormGroup
             as={Col}
             style={{width:"50%", margin:"auto"}}
-            controlId="validationFormik102"
             className="position-relative"
             
           >
@@ -100,7 +96,6 @@ export default function EmployerLoginPage() {
               isInvalid={formik.touched.password && formik.errors.password}
             />
             {formik.touched.password && formik.errors.password ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.password}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
-           
            
           </FormGroup>
         <FormGroup

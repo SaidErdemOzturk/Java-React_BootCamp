@@ -4,10 +4,13 @@ import AdvertService from '../services/advertService';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 
 export default function AdvertsList() {
 
+
+  let {user} = useSelector(state=>state)
     const [adverts, setAdverts] = useState([])
 
     useEffect(() => {
@@ -16,7 +19,7 @@ export default function AdvertsList() {
     }, [])
     let navigate = useNavigate();
     function handleLink(id){
-        navigate(`/adverts/${id}`)
+        navigate(`/${user.userItems.userType}/adverts/${id}`)
     }
     
   

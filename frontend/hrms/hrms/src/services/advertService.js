@@ -15,8 +15,13 @@ export default class AdvertService{
             values.imageUrl="https://www.turquagroup.com.tr/images/blog/blog_FCF81632-9A97-47DA-997B-2201C790A954.jpg"
 
         }
+        console.log("dddd")
         console.log(values)
         return axios.post("http://localhost:8080/api/advert/add",values)
+    }
+
+    delete(id){
+        return axios.delete(`http://localhost:8080/api/advert/deletebyid?id=${id}`)
     }
 
     getByEmployerId(id){

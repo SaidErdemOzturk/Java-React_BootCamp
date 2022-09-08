@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,6 +43,11 @@ public class AdvertController {
 	@PostMapping("/add")
 	public Result add(@RequestBody Advert advert) {
 		return this.advertService.add(advert);
+	}
+	
+	@DeleteMapping("/deletebyid")
+	public Result deleteById(@RequestParam Integer id) {
+		return this.advertService.deleteById(id);
 	}
 	
 	@GetMapping("/getallsortedwithdate")

@@ -15,6 +15,11 @@ import EmployerHomePage from '../pages/EmployerHomePage';
 import AdvertsAdd from '../pages/AdvertsAdd';
 import CandidateProfile from '../pages/CandidateProfile';
 import CandidateUpdateProfile from '../pages/CandidateUpdateProfile';
+import CandidateRecourse from '../pages/CandidateRecourse';
+import EmployerRecourse from '../pages/EmployerRecourse';
+import EmployerProfile from '../pages/EmployerProfile';
+import EmployerUpdateProfile from '../pages/EmployerUpateProfile';
+import EmployerAdvertRecourses from '../pages/EmployerAdvertRecourses';
 
 
 export default function Dashboard() {
@@ -32,11 +37,16 @@ export default function Dashboard() {
           <Route exact path="/employer/loginpage" element={<EmployerLoginPage />} />
           <Route exact path="/employer/homepage" element={<EmployerHomePage />} /> 
           <Route exact path="/candidate/homepage" element={<CandidateHomePage />} /> 
+          <Route exact path="/candidate/recourse" element={<CandidateRecourse />} /> 
+          <Route exact path="/employer/recourse" element={<EmployerRecourse />} /> 
+          <Route exact path="/employer/recourse/:id" element={<EmployerAdvertRecourses/>} /> 
           <Route exact path="/candidate/adverts/:id" element={<CandidateAdvertsDetail/>} /> 
           <Route exact path="/employer/adverts/:id" element={<EmployerAdvertsDetail/>} /> 
           {/* buradaki :id advertsDetails kısmındaki useParams ile eşleşiyor. */ }
           <Route exact path="/adverts" element={<AdvertsList/>} />
           <Route exact path="/candidate/profile" element={<CandidateProfile/>} />
+          <Route exact path="/employer/profile" element={<EmployerProfile/>} />
+          <Route exact path="/employer/updateprofile" element={<EmployerUpdateProfile/>} />
           <Route exact path="/candidate/updateprofile" element={<CandidateUpdateProfile/>} />
           <Route exact path="/employer/advertadd" element={<AdvertsAdd/>} />
         </Routes>

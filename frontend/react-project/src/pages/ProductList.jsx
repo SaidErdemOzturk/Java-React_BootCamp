@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { Button, NavLink } from 'react-bootstrap';
+import { Button, Container, NavLink } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import ProductService from '../services/productService';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,7 @@ export default function ProductList() {
         let productService = new ProductService;
         productService.getProducts().then(result=>setproducts(result.data.data))
     },[])
+    
 
 const handleAddToCart=(product)=>{
   dispatch(addToCart(product));
@@ -25,7 +26,9 @@ const handleAddToCart=(product)=>{
 
 
   return (
-    <div> <Table striped bordered hover variant="dark">
+    <div> 
+    <Container>
+      <Table striped bordered hover variant="dark">
     <thead>
       <tr>
         <th>Ürün Adı</th>
@@ -40,17 +43,19 @@ const handleAddToCart=(product)=>{
         {
             products.map(products =>(
                 <tr key={products.id} >
-                <td><Link to={`/products/${products.id}`} >{products.productName}</Link> </td>
+                <td>{<Link to={`/products/${products.id}`} >{products.productName}</Link>} </td>
                 <td>{products.unitPrice}</td>
                 <td>{products.unitsInStock}</td>
                 <td>{products.quantityPerUnit}</td>
                 <td>{products.category.categoryId}</td>
                 <td><Button onClick={()=>handleAddToCart(products)}>sepete ekle</Button></td>
               </tr>
-
             ))
         }
     </tbody>
-  </Table></div>
+  </Table>
+  </Container>
+  </div>
   )
 }
+

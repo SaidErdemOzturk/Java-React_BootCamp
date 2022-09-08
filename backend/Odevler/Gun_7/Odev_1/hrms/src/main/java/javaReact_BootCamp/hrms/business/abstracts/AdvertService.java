@@ -14,6 +14,8 @@ public interface AdvertService {
 	Result add(Advert advert);
 	
 	Result update(Advert advert);
+	
+	Result deleteById(Integer id);
 
 	DataResult<List<Advert>> getAllSortedWithDate();
 	

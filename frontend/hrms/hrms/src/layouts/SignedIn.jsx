@@ -22,10 +22,14 @@ export default function SignedIn() {
     dispatch(logout())
   }
 
+  function handleRecourse(){
+    navigate(`/${user.userItems.userType}/recourse`)
+
+  }
+
   return (
     <div>
       <Dropdown>
-        {console.log(user)}
         <Image roundedCircle="true" style={{ height: "3em", width: "3em", marginLeft: "0.5em" }} src={user.userItems.imageUrl} ></Image >
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="link">
         </Dropdown.Toggle>
@@ -33,6 +37,9 @@ export default function SignedIn() {
         <Dropdown.Menu variant="dark">
           <Dropdown.Item onClick={()=>handleProfile()} active>
             Bilgilerim
+          </Dropdown.Item>
+          <Dropdown.Item onClick={()=>handleRecourse()} active>
+            Başvurularım
           </Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleSignOut} >Çıkış yap</Dropdown.Item>

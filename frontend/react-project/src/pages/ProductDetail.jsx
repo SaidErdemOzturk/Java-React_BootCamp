@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom';
 import ProductService from '../services/productService';
 import Button from 'react-bootstrap/Button';
 import { clear } from '@testing-library/user-event/dist/clear';
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../store/actions/cartActions';
+import { toast } from 'react-toastify';
 
 export default function ProductDetail() {
     let {id} = useParams()
@@ -16,7 +19,18 @@ export default function ProductDetail() {
         productService.getByProductId(id).then(result=>setproduct(result.data.data))
 
     },[])
+    
+    let dispatch = useDispatch()
 
+    function handleAddToCart(){
+      dispatch(addToCart(product))
+      toast.success(`${product.productName} ürünü eklendi`)
+    }
+
+    function handleRemoveToCart(){
+      dispatch(removeFromCart(product))
+      toast.success(`${product.productName} ürünü çıkartıldı`)
+    }
 
   return (
 
@@ -26,13 +40,12 @@ export default function ProductDetail() {
       <Card.Text>
         ürün:{id}
         name=:{product.productName}
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
+        {product.quantityPerUnit}
       </Card.Text>
-      <Button variant="outline-success" style={{float:"left",width:"49%"}} >
+      <Button variant="outline-success" onClick={()=>handleAddToCart()}  style={{float:"left",width:"49%"}} >
         Sepete Ekle
       </Button>
-      <Button  variant="outline-danger" style={{float:"right",width:"49%"}}>
+      <Button  variant="outline-danger" onClick={()=>handleRemoveToCart()}  style={{float:"right",width:"49%"}}>
         Sepetten Kaldır
       </Button>
     </Card.Body>

@@ -12,4 +12,6 @@ public interface CandidateService {
 	Result add(Candidate candidate);
 	
 	DataResult<Candidate> getById(Integer id);
+	
+	Result update (Candidate candidate);
 }

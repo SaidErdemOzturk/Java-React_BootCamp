@@ -60,7 +60,14 @@ public class CandidateManager implements CandidateService {
 			return new ErrorDataResult<>("Bu id ile biri bulunamadı");
 		}		
 	}
-	
+
+	@Override
+	public Result update(Candidate candidate) {
+		// TODO Auto-generated method stub		
+		this.candidateDao.save(candidate);
+		return new SuccessResult("Başarı ile güncelleme oldunuz.");
+
+	}
 	private boolean checkEmail(Candidate candidate) {
 		if(this.userDao.getByEmail(candidate.getEmail())==null) {
 			return true;

@@ -47,8 +47,8 @@ public class CurriculumVitae {
 	private String about;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="curriculumVitae")
 	@JsonIgnoreProperties({"curriculumVitae"})
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<JobExperience> experiences;
 	
 	@JsonIgnore

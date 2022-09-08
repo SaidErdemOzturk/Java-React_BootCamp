@@ -1,41 +1,42 @@
 import React, { useEffect, useState } from 'react'
-import {FormControl, FormLabel, FormGroup,Button} from 'react-bootstrap'
+import { FormGroup, FormLabel, FormControl,Button } from 'react-bootstrap'
 import Col from 'react-bootstrap/Col';
-
 import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
-import { Formik, Field, Form, useFormik } from 'formik';
+import {  useFormik } from 'formik';
 import CandidateService from '../services/candidateService';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import EmployerService from '../services/employerService';
 import { useNavigate } from 'react-router-dom';
 
 
 
-let employerService = new EmployerService;
+const validationSchema = yup.object().shape({
+  firstName: yup.string().required('Required first name'),
+  lastName: yup.string().required('Required last name'),
+  email: yup.string().email('Invalid email format').required('required email'),
+  password: yup.string().required('Required password'),
+  identifierNumber: yup.string().required('Required identifier number'),
+  birthDay: yup.string().required('Required birth day'),
+});
+const initialValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  identifierNumber: '',
+  birthDay: '',
+}
+
+let candidateService = new CandidateService;
+
 export default function RegisterCandidate() {
+  let navigate = useNavigate();
 
-let navigate = useNavigate();
-
-  const validationSchema = yup.object().shape({
-    companyName: yup.string().required('Required companyName'),
-    webSite: yup.string().required('Required webSite'),
-    email: yup.string().email('Invalid email format').required('required email'),
-    password: yup.string().required('Required password'),
-    phoneNumber: yup.string().required('Required phoneNumber'),
-  });
-  const initialValues = {
-    companyName: '',
-    webSite: '',
-    email: '',
-    password: '',
-    phoneNumber: '',
-  }
   const onSubmit = values =>{
-    employerService.register(values).then(response =>{
+    candidateService.add(values).then(response =>{
       if(response.data.success){
-        toast.success(response.data.message)
+        toast.success(response.data.message+"Giriş sayfasına yönlendiriliyorsunuz")
         navigate("/candidate/loginpage");
       }else{
         toast.error(response.data.message)
@@ -47,8 +48,6 @@ let navigate = useNavigate();
     onSubmit,
     validationSchema,
   })
-
-
   return (
     <div>
 
@@ -59,34 +58,37 @@ let navigate = useNavigate();
             md="6"
             className="position-relative"
           >
-            <FormLabel>companyName</FormLabel>
+            <FormLabel>First name</FormLabel>
             <FormControl
               type="text"
-              name="companyName"
-              value={formik.values.companyName}
+              name="firstName"
+              value={formik.values.firstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              isValid={formik.touched.companyName && !formik.errors.companyName}
-              isInvalid={formik.touched.companyName && formik.errors.companyName}
+              isValid={formik.touched.firstName && !formik.errors.firstName}
+              isInvalid={formik.touched.firstName && formik.errors.firstName}
             />
-            {formik.touched.companyName && formik.errors.companyName ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.companyName}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+
+            {formik.touched.firstName && formik.errors.firstName ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.firstName}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
           </FormGroup>
           <FormGroup
             as={Col}
             md="6"
             className="position-relative"
           >
-            <FormLabel>webSite</FormLabel>
+            <FormLabel>Last name</FormLabel>
             <FormControl
               type="text"
-              name="webSite"
-              value={formik.values.webSite}
+              name="lastName"
+              value={formik.values.lastName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              isValid={formik.touched.webSite && !formik.errors.webSite}
-              isInvalid={formik.touched.webSite && formik.errors.webSite}
+              isValid={formik.touched.lastName && !formik.errors.lastName}
+              isInvalid={formik.touched.lastName && formik.errors.lastName}
             />
-            {formik.touched.webSite && formik.errors.webSite ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.webSite}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+            {formik.touched.lastName && formik.errors.lastName ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.lastName}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+           
+           
           </FormGroup>
         </Row>
         <Row className="mb-3">
@@ -131,19 +133,29 @@ let navigate = useNavigate();
             md="8"
             className="position-relative"
           >
-            <FormLabel>phoneNumber</FormLabel>
+            <FormLabel>Identifier Number</FormLabel>
             <FormControl
               type="text"
-              name="phoneNumber"
-              value={formik.values.phoneNumber}
+              name="identifierNumber"
+              value={formik.values.identifierNumber}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              isValid={formik.touched.phoneNumber && !formik.errors.phoneNumber}
-              isInvalid={formik.touched.phoneNumber && formik.errors.phoneNumber}
+              isValid={formik.touched.identifierNumber && !formik.errors.identifierNumber}
+              isInvalid={formik.touched.identifierNumber && formik.errors.identifierNumber}
             />
 
-            {formik.touched.phoneNumber && formik.errors.phoneNumber ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.phoneNumber}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
+            {formik.touched.identifierNumber && formik.errors.identifierNumber ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.identifierNumber}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
           </FormGroup>
+
+
+
+          <div className="col-md-4">
+            <FormGroup controlId="birthDay">
+              <FormLabel>Select Date</FormLabel>
+              <FormControl type="date" name="birthDay" value={formik.values.birthDay}  onChange={formik.handleChange} placeholder="Date of Birth" />
+           
+            </FormGroup>
+          </div>
         </Row>
         <FormGroup
           className="position-relative"

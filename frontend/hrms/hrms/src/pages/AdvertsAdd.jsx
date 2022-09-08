@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {FormControl, FormLabel, FormGroup,Button, ButtonGroup} from 'react-bootstrap'
+import {FormControl, FormLabel, FormGroup,Button,FormCheck, ButtonGroup} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
@@ -7,6 +7,11 @@ import { Formik, Field, Form, useFormik } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import AdvertService from '../services/advertService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import CustomWidget from '../utilities/customLayouts/customWidget';
+
 
 
 
@@ -37,16 +42,25 @@ const validationSchema = yup.object().shape({
     startingDate: '',
   }
 
+  let advertService = new AdvertService;
 
 
 export default function AdvertsAdd() {
 
-  const {employer} = useSelector(state=>state);
+  const {user} = useSelector(state=>state);
   const [selectedImage, setSelectedImage] = useState("")  
+  const [select, setselect] = useState(false)
 
+  function handleCheckbox(){
+    if(select){
+      setselect(false)
+    }else{
+    setselect(true)
+    }
+  }
 
   function handleOpenWidget(){
-    
+      
     var myWidget = window.cloudinary.createUploadWidget({
       cloudName: 'daidoerdem', 
       uploadPreset: 'react_upload'}, (error, result) => { 
@@ -56,22 +70,43 @@ export default function AdvertsAdd() {
           }else{
             console.log('Done! Here is the image info: ', result.info); 
             setSelectedImage(result.info.url)
+            console.log(selectedImage)
           }
 
         }
       }
     )
     myWidget.open();
+    
   }
 
+
+
+
+
+
+
+
+  let navigate = useNavigate()
   
-
-
- const onSubmit = values =>{
-  values.imageUrl=selectedImage
-  values.employer=employer.employerItems
-  let advertService = new AdvertService;
-  advertService.add(values)
+  const onSubmit = values =>{
+    if(select){
+      values.imageUrl=selectedImage
+      console.log(user)
+      values.employer=user.userItems
+      advertService.add(values).then(response=>{
+        if(response.data.success){
+          toast.success(response.data.message)
+          navigate("/employer/homepage")
+        }else{
+          toast.error(response.data.message)
+        }
+      })
+    }else{
+      toast.error("Okuyup kabul edin.")
+    }
+  
+   
   }
 
   const formik = useFormik({
@@ -278,22 +313,26 @@ export default function AdvertsAdd() {
               onChange={formik.handleChange} 
                isValid={formik.touched.startingDate && !formik.errors.startingDate}
                isInvalid={formik.touched.startingDate && formik.errors.startingDate}
-              onBlur={formik.handleBlur}
-
-               placeholder="starting date" />
+              onBlur={formik.handleBlur}/>
            {formik.touched.startingDate && formik.errors.startingDate ? <FormControl.Feedback type="invalid" tooltip> {formik.errors.startingDate}</FormControl.Feedback>: <FormControl.Feedback tooltip>Looks good!</FormControl.Feedback>}
            
             </FormGroup>
          
         </Row>
-        <Button type="file" onClick={()=>handleOpenWidget()}>Resim seç</Button>
+
+        <Button onClick={()=>handleOpenWidget()}> Resim seç</Button>
+        
 
         <FormGroup
           className="position-relative"
         >
           <br></br>
-          <Button type="submit" style={{ width: "50%" }}>Giriş yap</Button>
-
+          <Row style={{width:"40%",margin:"auto"}}>
+            <Col  >
+          <FormCheck aria-label="option 3" onClick={()=>handleCheckbox()} label="Okudum kabul ediyorum"/>
+          <Button type="submit" style={{width:"100%"}}>İlan ekle</Button>
+          </Col>
+          </Row>
         </FormGroup>
 
       </form>

@@ -21,6 +21,16 @@ const schema = yup.object().shape({
    })*/
 
 });
+const initialValues={
+  projectName: '',
+  unitPrice: '',
+  unitsInStock: '',
+  quantityPerUnit: '',
+  category: {
+    categoryId: 0,
+    categoryName: '',
+  }
+}
 
 export default function ProductAdd() {
 
@@ -40,17 +50,7 @@ export default function ProductAdd() {
         enableReinitialize={true}
         validationSchema={schema}
         onSubmit={console.log}
-        initialValues={{
-          projectName: '',
-          unitPrice: '',
-          unitsInStock: '',
-          quantityPerUnit: '',
-          category: {
-            categoryId: 0,
-            categoryName: '',
-          }
-
-        }}
+        initialValues={initialValues}
       >
         {({
           handleSubmit,

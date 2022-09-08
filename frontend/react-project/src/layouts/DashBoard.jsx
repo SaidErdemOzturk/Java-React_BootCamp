@@ -17,7 +17,7 @@ export default function DashBoard() {
       <ToastContainer />
 
             <Row>
-              <Col sm="2"> <Categories /></Col>
+
             
             <Col sm="10">
             <Routes>

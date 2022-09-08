@@ -79,5 +79,12 @@ public class AdvertManager implements AdvertService {
 		return new SuccessDataResult<List<Advert>>(advertDao.getByEmployer_Id(employerId), "veriler çekildi");
 	}
 
+	@Override
+	public Result deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		this.advertDao.deleteById(id);
+		return new SuccessResult("İlan kaldırıldı.");
+	}
+
 
 }
